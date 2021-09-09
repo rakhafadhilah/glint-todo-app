@@ -17,7 +17,7 @@ export class UserGuard implements CanActivate{
     // const user = request.user;
 
     const auth = request.headers.authorization
-
+    if(!auth) return false
     const token = auth.substring(7, auth.length)
 
     const user = await this.userService.findOne({ token })
