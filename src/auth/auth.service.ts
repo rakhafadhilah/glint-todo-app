@@ -84,8 +84,6 @@ export class AuthService {
 
         // delete user.password
 
-        // console.log(result)
-        console.log("Validate User Auth Service")
 
         return result
 
@@ -97,8 +95,6 @@ export class AuthService {
         if(!user) throw new UnauthorizedException();
         delete user.password
 
-        console.log('User Auth Service')
-        console.log(user)
         return user
 
     }

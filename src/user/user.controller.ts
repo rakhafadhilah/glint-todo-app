@@ -15,14 +15,14 @@ export class UserController {
     @UseGuards(UserGuard, AdminGuard)
     @Get()
     showUser(@Req() req: Request) {
-        return req.user;
+        // return req.user;
         return this.userService.getUsers()
     }
     @UseGuards(UserGuard)
     @Post('testPayload')
     testPayload(@Req() req: Request, @Body() payload: Record<string,any>) {
-        return {user: req.user, payloaduser: payload};
-        // return this.userService.getUsers()
+        // return {user: req.user, payloaduser: payload};
+        return this.userService.getUsers()
     }
 
     @Post('register')
