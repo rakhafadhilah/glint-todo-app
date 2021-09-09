@@ -13,8 +13,12 @@ export class UserService {
     
     constructor(@InjectRepository(User) private UserRepository: Repository<User>) {}
 
-    async getUsers(): Promise<User[]>{
-        return this.UserRepository.find({select: ['email', 'isAdmin']});
+    async getUsers(){
+        const users = await this.UserRepository.find({select: ['email', 'isAdmin']}); 
+        const data = {
+            data: users
+        }
+        return data
     }
 
     async save(user: User) {
