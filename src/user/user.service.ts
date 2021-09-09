@@ -61,10 +61,10 @@ export class UserService {
 
             if(password != confirmPassword) throw new HttpException('Password or confirmation password not same', HttpStatus.FORBIDDEN)
             
-            const isUsernameExist = await this.findByUsername(username)
+            const isUsernameExist = await this.findOne({username})
 
             const isEmailExist = await this.findOne({email})
-    
+
             if(isUsernameExist) throw new HttpException('Username is Already Exist!', HttpStatus.FORBIDDEN)
 
             if(isEmailExist) throw new HttpException('Email is Already Exist!', HttpStatus.FORBIDDEN)
