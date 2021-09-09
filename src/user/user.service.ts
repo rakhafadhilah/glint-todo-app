@@ -68,6 +68,9 @@ export class UserService {
             if(isUsernameExist) throw new HttpException('Username is Already Exist!', HttpStatus.FORBIDDEN)
 
             if(isEmailExist) throw new HttpException('Email is Already Exist!', HttpStatus.FORBIDDEN)
+
+            console.log(isUsernameExist)
+            console.log(isEmailExist)
     
             const hashedPassword = await bcrypt.hash(password, 10);
     

@@ -66,6 +66,8 @@ let UserService = class UserService {
             throw new common_1.HttpException('Username is Already Exist!', common_1.HttpStatus.FORBIDDEN);
         if (isEmailExist)
             throw new common_1.HttpException('Email is Already Exist!', common_1.HttpStatus.FORBIDDEN);
+        console.log(isUsernameExist);
+        console.log(isEmailExist);
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = this.UserRepository.create({
             name,

@@ -44,6 +44,32 @@ export class AuthService {
         }
     }
 
+    async loginAdmin(username: string, password: string){
+        const user = await this.userService.findOne({username})
+
+        if(!user) throw new BadRequestException
+
+        if(!user.isAdmin) throw new UnauthorizedException();
+
+        if (!await bcrypt.compare(password, user.password)) {
+            throw new BadRequestException('invalid credentials');
+        }
+
+        // const jwt = await this.jwtService.signAsync({id: user.id, username: user.username});
+        // user.token = jwt
+
+        const token = crypto.randomBytes(10).toString('hex');
+
+        user.token = token
+
+        await this.userService.save(user)
+
+        return {
+            message: "Login Admin Success",
+            access_token: token,
+        }
+    }
+
     async validateUser(username: string, pass: string): Promise<any>{
         const user = await this.userService.findOne({username})
 

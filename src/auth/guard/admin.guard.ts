@@ -7,10 +7,8 @@ import { User } from "src/user/user.entity";
 @Injectable()
 export class AdminGuard implements CanActivate{
   
-  // constructor(private reflector: Reflector, userService: UserService) {}
   constructor(private userService: UserService) {}
 
-  // async canActivate(context: ExecutionContext,): boolean | Promise<boolean> | Observable<boolean>  {
   async canActivate(context: ExecutionContext,) {
 
     const request = context.switchToHttp().getRequest();
