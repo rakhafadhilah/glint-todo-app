@@ -52,7 +52,6 @@ export class UserService {
         });
 
         await this.UserRepository.save(user)
-
         return user
     }
 
